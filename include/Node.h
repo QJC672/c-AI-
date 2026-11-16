@@ -9,6 +9,7 @@ public:
     virtual ~Node() = default;
 
     const std::string& name() const;
+    bool isInitialized() const;
 
     // 子类必须实现，并在实现中输出初始化/关闭日志
     virtual void init() = 0;
@@ -17,6 +18,11 @@ public:
     Node(const Node&) = delete;
     Node& operator=(const Node&) = delete;
 
+protected:
+    void markInitialized();
+    void markShutdown();
+
 private:
     std::string m_name;
+    bool m_initialized = false;
 };
