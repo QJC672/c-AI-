@@ -15,8 +15,8 @@ public:
     void init() override;
     void shutdown() override;
 
-    // 被动接收消息，输出内容与时间戳
-    void receive(const Message& message);
+    // 被动接收消息，输出内容与时间戳；虚函数便于扩展自定义接收行为
+    virtual void receive(const Message& message);
 
 private:
     std::string m_topic;
